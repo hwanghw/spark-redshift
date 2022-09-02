@@ -817,6 +817,7 @@ When creating a table, this library can be configured to use a specific compress
 Redshift allows columns to have descriptions attached that should show up in most query tools (using the `COMMENT` command). You can set the `description` column metadata field to specify a description for individual columns.
 
 ## Auto Pushdown
+
 The Spark Connector applies predicate and query pushdown by capturing and analyzing the Spark logical plans for SQL operations. When the data source is Redshift, the operations are translated into a SQL query and then executed in Redshift to improve performance.
 
 Not all of Spark SQL operators can be pushed down. When pushdown fails, the connector falls back to a less-optimized execution plan. The unsupported operations are instead performed in Spark.
@@ -843,6 +844,9 @@ By default, the query result is unload to S3 as text file.  There is an experime
 ```
 
 Refer to integration test cases for supported operations for pushdown.
+
+#### Acknowledgments
+Auto Pushdown is adapted from **[spark-snowflake connector](https://github.com/snowflakedb/spark-snowflake)** project.
 
 ## Transactional Guarantees
 
